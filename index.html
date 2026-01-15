@@ -14,26 +14,30 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--tg-theme-bg-color, #fff);
-            color: var(--tg-theme-text-color, #000);
-            padding: 10px;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 0;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 600px;
             margin: 0 auto;
+            padding: 10px;
         }
 
         .header {
             text-align: center;
             padding: 20px 0;
-            border-bottom: 2px solid #e0e0e0;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: -10px -10px 20px -10px;
+            border-radius: 0 0 20px 20px;
         }
 
         .header h1 {
-            color: #6C63FF;
+            color: white;
             font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .auth-form, .catalog, .checkout {
@@ -52,14 +56,22 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
+            color: #aaa;
         }
 
         .form-group input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 2px solid #333;
             border-radius: 8px;
             font-size: 16px;
+            background: #2a2a3e;
+            color: #eee;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
         }
 
         .btn {
@@ -74,76 +86,84 @@
         }
 
         .btn-primary {
-            background: #6C63FF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
 
-        .btn-primary:hover {
-            background: #5650e6;
+        .btn-primary:active {
+            transform: scale(0.98);
         }
 
         .btn-success {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 80px;
         }
 
         .product-card {
-            border: 1px solid #e0e0e0;
+            background: #2a2a3e;
             border-radius: 12px;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            border: 2px solid transparent;
         }
 
-        .product-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transform: translateY(-2px);
+        .product-card:active {
+            transform: scale(0.95);
+            border-color: #667eea;
         }
 
         .product-card.out-of-stock {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
         .product-img {
             width: 100%;
             height: 120px;
-            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
         }
 
         .product-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             margin-bottom: 5px;
+            color: #eee;
+            min-height: 36px;
         }
 
         .product-price {
-            color: #6C63FF;
+            color: #667eea;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 18px;
+            margin: 5px 0;
         }
 
         .product-stock {
-            font-size: 12px;
-            color: #666;
+            font-size: 11px;
+            color: #888;
             margin-top: 5px;
         }
 
-        .cart {
+        .cart-float {
             position: fixed;
-            bottom: 70px;
+            bottom: 20px;
             right: 20px;
-            background: #6C63FF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             width: 60px;
             height: 60px;
@@ -153,7 +173,12 @@
             justify-content: center;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(108,99,255,0.4);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+            z-index: 1000;
+        }
+
+        .cart-float:active {
+            transform: scale(0.9);
         }
 
         .cart-badge {
@@ -168,6 +193,7 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
+            font-weight: bold;
         }
 
         .cart-items {
@@ -178,14 +204,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border: 1px solid #e0e0e0;
+            padding: 12px;
+            background: #2a2a3e;
             border-radius: 8px;
             margin-bottom: 10px;
         }
 
         .cart-item-info {
             flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #888;
+            font-size: 14px;
         }
 
         .cart-item-controls {
@@ -195,22 +231,33 @@
         }
 
         .cart-item-controls button {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border: none;
             border-radius: 50%;
-            background: #6C63FF;
+            background: #667eea;
             color: white;
             font-size: 18px;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cart-item-controls button:active {
+            transform: scale(0.9);
+        }
+
+        .cart-item-controls span {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 600;
         }
 
         .total {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
             text-align: right;
             margin: 20px 0;
-            color: #6C63FF;
+            color: #667eea;
         }
 
         .checkout-options {
@@ -218,12 +265,13 @@
         }
 
         .option-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .option-group h3 {
             margin-bottom: 10px;
             font-size: 16px;
+            color: #aaa;
         }
 
         .option-buttons {
@@ -234,26 +282,44 @@
 
         .option-btn {
             padding: 10px 20px;
-            border: 2px solid #6C63FF;
+            border: 2px solid #667eea;
             border-radius: 8px;
-            background: white;
-            color: #6C63FF;
+            background: #2a2a3e;
+            color: #667eea;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 14px;
         }
 
         .option-btn.selected {
-            background: #6C63FF;
+            background: #667eea;
             color: white;
         }
 
+        .option-btn:active {
+            transform: scale(0.95);
+        }
+
         .back-btn {
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 20px;
-            background: #f0f0f0;
+            background: #2a2a3e;
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            color: #eee;
+            font-size: 14px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+
+        .empty-cart-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -265,7 +331,7 @@
 
         <!-- Форма авторизации -->
         <div class="auth-form active" id="authForm">
-            <h2 style="margin-bottom: 20px;">Вход / Регистрация</h2>
+            <h2 style="margin-bottom: 20px; text-align: center;">Вход / Регистрация</h2>
             <div class="form-group">
                 <label>Ваш @username</label>
                 <input type="text" id="username" placeholder="username">
@@ -298,16 +364,18 @@
                         <button class="option-btn" onclick="selectOption('location', 'Центр города')">Центр города</button>
                         <button class="option-btn" onclick="selectOption('location', 'Вокзал')">Вокзал</button>
                         <button class="option-btn" onclick="selectOption('location', 'Парк')">Парк</button>
+                        <button class="option-btn" onclick="selectOption('location', 'Площадь')">Площадь</button>
                     </div>
                 </div>
 
                 <div class="option-group">
-                    <h3>🕐 Время:</h3>
+                    <h3>🕐 Время выдачи:</h3>
                     <div class="option-buttons" id="timeOptions">
                         <button class="option-btn" onclick="selectOption('time', '17:00')">17:00</button>
                         <button class="option-btn" onclick="selectOption('time', '18:00')">18:00</button>
                         <button class="option-btn" onclick="selectOption('time', '19:00')">19:00</button>
                         <button class="option-btn" onclick="selectOption('time', '20:00')">20:00</button>
+                        <button class="option-btn" onclick="selectOption('time', '21:00')">21:00</button>
                     </div>
                 </div>
 
@@ -320,11 +388,11 @@
                 </div>
             </div>
 
-            <button class="btn btn-success" style="margin-top: 20px;" onclick="completeOrder()">Оформить заказ</button>
+            <button class="btn btn-success" style="margin-top: 20px;" onclick="completeOrder()">✅ Оформить заказ</button>
         </div>
 
         <!-- Корзина -->
-        <div class="cart" onclick="showCheckout()" id="cartButton">
+        <div class="cart-float" onclick="showCheckout()" id="cartButton" style="display: none;">
             🛒
             <div class="cart-badge" id="cartBadge">0</div>
         </div>
@@ -333,6 +401,7 @@
     <script>
         let tg = window.Telegram.WebApp;
         tg.expand();
+        tg.ready();
 
         let currentUser = null;
         let cart = {};
@@ -340,6 +409,23 @@
             location: null,
             time: null,
             payment: null
+        };
+
+        // Эмодзи для товаров
+        const productEmojis = {
+            "chaserfpultra30ml": "💜",
+            "chaserblackultra30ml": "🖤",
+            "chasermixultra30ml": "🌈",
+            "chaserspecialberry30ml": "🍓",
+            "chasernovanew30ml": "✨",
+            "flavorlabfl35030ml": "🔬",
+            "flavorlabpe1000030ml": "⚡",
+            "mooduck30ml": "🦆",
+            "hypehard30ml": "💥",
+            "aromamax30ml": "🌸",
+            "mjamv230ml": "🍇",
+            "liquidlablucky30ml": "🍀",
+            "elfliq30ml": "🧚"
         };
 
         const products = {
@@ -359,7 +445,7 @@
         };
 
         function login() {
-            const username = document.getElementById('username').value;
+            const username = document.getElementById('username').value.replace('@', '');
             const password = document.getElementById('password').value;
 
             if (!username || !password) {
@@ -372,11 +458,16 @@
         }
 
         function register() {
-            const username = document.getElementById('username').value;
+            const username = document.getElementById('username').value.replace('@', '');
             const password = document.getElementById('password').value;
 
             if (!username || !password) {
                 tg.showAlert('Заполните все поля');
+                return;
+            }
+
+            if (password.length < 6) {
+                tg.showAlert('Пароль должен быть минимум 6 символов');
                 return;
             }
 
@@ -387,13 +478,16 @@
             }));
 
             currentUser = username;
-            showCatalog();
+            setTimeout(() => {
+                showCatalog();
+            }, 500);
         }
 
         function showCatalog() {
             document.getElementById('authForm').classList.remove('active');
             document.getElementById('catalog').classList.add('active');
             document.getElementById('checkout').classList.remove('active');
+            document.getElementById('cartButton').style.display = 'flex';
             
             renderProducts();
         }
@@ -406,11 +500,13 @@
                 const card = document.createElement('div');
                 card.className = 'product-card' + (product.quantity === 0 ? ' out-of-stock' : '');
                 
+                const emoji = productEmojis[id] || '💨';
+                
                 card.innerHTML = `
-                    <img class="product-img" src="C:\\bass\\photo\\${id}.png" alt="${product.name}">
+                    <div class="product-img">${emoji}</div>
                     <div class="product-name">${product.name}</div>
                     <div class="product-price">${product.price}₽</div>
-                    <div class="product-stock">${product.quantity > 0 ? `В наличии: ${product.quantity}` : 'Нет в наличии'}</div>
+                    <div class="product-stock">${product.quantity > 0 ? `В наличии: ${product.quantity}` : '❌ Нет в наличии'}</div>
                 `;
 
                 if (product.quantity > 0) {
@@ -431,7 +527,21 @@
             if (cart[productId] < products[productId].quantity) {
                 cart[productId]++;
                 updateCartBadge();
-                tg.HapticFeedback.impactOccurred('light');
+                
+                if (tg.HapticFeedback) {
+                    tg.HapticFeedback.impactOccurred('light');
+                }
+                
+                // Визуальная обратная связь
+                const cards = document.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    if (card.querySelector('.product-name').textContent === products[productId].name) {
+                        card.style.borderColor = '#667eea';
+                        setTimeout(() => {
+                            card.style.borderColor = 'transparent';
+                        }, 300);
+                    }
+                });
             } else {
                 tg.showAlert('Больше нет в наличии');
             }
@@ -439,7 +549,14 @@
 
         function updateCartBadge() {
             const total = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-            document.getElementById('cartBadge').textContent = total;
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = total;
+            
+            if (total > 0) {
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
         }
 
         function showCheckout() {
@@ -468,11 +585,11 @@
                 item.className = 'cart-item';
                 item.innerHTML = `
                     <div class="cart-item-info">
-                        <div>${product.name}</div>
-                        <div>${product.price}₽ × ${qty} = ${itemTotal}₽</div>
+                        <div class="cart-item-name">${product.name}</div>
+                        <div class="cart-item-price">${product.price}₽ × ${qty} = ${itemTotal}₽</div>
                     </div>
                     <div class="cart-item-controls">
-                        <button onclick="changeQuantity('${id}', -1)">-</button>
+                        <button onclick="changeQuantity('${id}', -1)">−</button>
                         <span>${qty}</span>
                         <button onclick="changeQuantity('${id}', 1)">+</button>
                     </div>
@@ -490,6 +607,14 @@
                 delete cart[productId];
             } else if (newQty <= products[productId].quantity) {
                 cart[productId] = newQty;
+            } else {
+                tg.showAlert('Больше нет в наличии');
+                return;
+            }
+
+            if (Object.keys(cart).length === 0) {
+                showCatalog();
+                return;
             }
 
             updateCartBadge();
@@ -544,11 +669,20 @@
 
             tg.sendData(JSON.stringify(orderData));
             
+            tg.showAlert('✅ Заказ оформлен! Курьер свяжется с вами.');
+            
             // Очищаем корзину
             cart = {};
             updateCartBadge();
             
-            tg.close();
+            setTimeout(() => {
+                tg.close();
+            }, 1000);
+        }
+
+        // Инициализация
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            document.getElementById('username').value = tg.initDataUnsafe.user.username || '';
         }
     </script>
 </body>
